@@ -1,0 +1,2 @@
+retrain_date,reason,model_file,mae_at_train_1w,mae_at_train_2w,mae_at_train_4w
+2026-10-22,initial,models_20261022.joblib,2.6893726979143984,4.291849290063015,6.2066999305143975

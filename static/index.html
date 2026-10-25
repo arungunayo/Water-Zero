@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WaterZero — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="stage" id="stage">
+
+      <!-- Top signal stripe + navigation -->
+      <div class="a" style="left:0;top:0;width:1440px;height:6px;background:#c7f052"></div>
+      <div class="a" style="left:0;top:6px;width:1440px;height:82px;background:#0e2924"></div>
+      <div class="a" style="left:178px;top:62.88px;width:88px;height:3px;background:#c4f52e"></div>
+
+      <div class="t" style="left:24px;top:23px;width:170px;font:700 20px/normal var(--font);color:#fcfbf2">WATERZERO</div>
+      <div class="t" style="left:24px;top:51px;width:180px;font:500 9px/normal var(--font);color:#c7f052">RESERVOIR FIELD ATLAS  /  06</div>
+
+      <a class="t nav" href="/" style="left:198.63px;top:23px;width:125px;font:600 17.88px/18px var(--font);color:#fcfbf2">1. Dashboard</a>
+      <a class="t nav" href="/methodology" style="left:398px;top:23px;width:145px;font:400 17.88px/18px var(--font);color:#fcfbf2">2. Methodology</a>
+      <a class="t nav" href="/about-team" style="left:611.13px;top:23px;width:145px;font:400 17.88px/18px var(--font);color:#fcfbf2">3. About Team</a>
+
+      <!-- Reservoir Switcher in Header -->
+      <div class="a" style="right:32px;top:24px;display:flex;align-items:center;gap:8px;z-index:50">
+        <span style="font:700 9px/normal var(--font);color:#c7f052;letter-spacing:0.5px">RESERVOIR:</span>
+        <a id="switchHirakud" class="res-switcher" href="?reservoir=hirakud">HIRAKUD (ML ACTIVE)</a>
+        <a id="switchKrs" class="res-switcher" href="?reservoir=krs">KRS (FIGMA DEMO)</a>
+      </div>
+
+      <!-- Hero -->
+      <div class="t" id="breadcrumb" style="left:32px;top:99px;width:840px;font:700 10px/normal var(--font);color:#4f7a2e"></div>
+      <div class="t" id="heroTitle" style="left:745px;top:105px;width:820px;transform:translateX(-50%);text-align:center;font:700 58px/62px var(--font);color:#0e2825">Water,
+under pressure.</div>
+      <div class="t" id="heroSubtitle" style="left:719px;top:237px;width:732px;transform:translateX(-50%);text-align:center;font:400 16px/23px var(--font);color:#4d6359">An early-warning read on storage, inflow and the decisions
+that may matter before the next monsoon window.</div>
+
+      <!-- Section pill nav -->
+      <div class="a" style="left:465px;top:303px;width:558px;height:48px;background:#fcfbf2;border:1px solid #ccd4c4;border-radius:24px"></div>
+      <div class="a" style="left:485px;top:311px;width:86px;height:32px;background:#def0d1;border-radius:16px"></div>
+      <a class="t pill" id="navOverview" href="/" style="left:495px;top:322px;font:600 9px/14px var(--font);color:#0e2924">Overview</a>
+      <a class="t pill" id="navForecasts" href="/forecasts" style="left:586px;top:322px">Forecasts</a>
+      <a class="t pill" id="navStressTest" href="/stress-test" style="left:668px;top:322px">Stress Test</a>
+      <a class="t pill" id="navEvidence" href="/evidence" style="left:771px;top:322px">Evidence</a>
+      <a class="t pill" id="navModelHealth" href="/model-health" style="left:852px;top:322px">Model health</a>
+      <a class="t pill" id="navReports" href="/reports" style="left:958px;top:322px">Reports</a>
+
+      <div class="a" style="left:32px;top:425.5px;width:1368px;height:1px;background:#c7cfba"></div>
+
+      <!-- Block 01: Reservoir overview -->
+      <a class="card-link" href="/" style="left:32px;top:385px;width:256px;height:170px" title="Overview"></a>
+      <div class="a" style="left:32px;top:385px;width:256px;height:170px;background:#fcfbf2;border:1px solid #ccd1ba;border-radius:4px;pointer-events:none"></div>
+      <div class="a" style="left:32px;top:385px;width:4px;height:170px;background:#457829;border-radius:1px;pointer-events:none"></div>
+      <div class="t" style="left:46px;top:397px;width:230px;font:700 14px/normal var(--font);color:#596b5c;pointer-events:none">01  RESERVOIR OVERVIEW</div>
+      <div class="t" style="left:46px;top:421px;width:230px;font:700 11px/normal var(--font);color:#596b5c;pointer-events:none">CURRENT STORAGE</div>
+      <div class="t" id="b1Value" style="left:46px;top:437px;width:230px;font:700 22px/normal var(--font);color:#0e2924;pointer-events:none"></div>
+      <svg id="miniTrend" class="a" style="left:46px;top:455px;overflow:hidden;pointer-events:none" width="230" height="60"></svg>
+      <div class="a" style="left:46px;top:512px;width:222px;height:1px;background:#ccd1ba;border-radius:1px;pointer-events:none"></div>
+      <div class="t" id="b1Note" style="left:46px;top:530px;width:230px;font:500 8px/normal var(--font);color:#596b5c;pointer-events:none"></div>
+
+      <!-- Block 02: Forecast chart -->
+      <a class="card-link" href="/forecasts" style="left:312px;top:385px;width:256px;height:170px" title="Forecasts"></a>
+      <div class="a" style="left:312px;top:385px;width:256px;height:170px;background:#fcfbf2;border:1px solid #ccd1ba;border-radius:4px;pointer-events:none"></div>
+      <div class="a" style="left:312px;top:385px;width:4px;height:170px;background:#2b7aad;border-radius:1px;pointer-events:none"></div>
+      <div class="t" style="left:326px;top:397px;width:230px;font:700 14px/normal var(--font);color:#596b5c;pointer-events:none">02  FORECAST CHART</div>
+      <div class="t" style="left:326px;top:421px;width:230px;font:700 10px/normal var(--font);color:#596b5c;pointer-events:none">30-DAY OUTLOOK</div>
+      <div class="t" id="b2Value" style="left:326px;top:437px;width:230px;font:700 22px/normal var(--font);color:#0e2924;pointer-events:none"></div>
+      <div class="a" style="left:326px;top:484px;width:226px;height:1px;background:#ccd1ba;border-radius:1px;pointer-events:none"></div>
+      <div class="a" style="left:326px;top:494px;width:226px;height:1px;background:#ccd1ba;border-radius:1px;pointer-events:none"></div>
+      <div class="a" style="left:326px;top:504px;width:226px;height:1px;background:#ccd1ba;border-radius:1px;pointer-events:none"></div>
+      <svg id="miniForecast" class="a" style="left:326px;top:440px;overflow:hidden;pointer-events:none" width="226" height="70"></svg>
+      <div class="t" id="b2Note" style="left:326px;top:530px;width:230px;font:500 8px/normal var(--font);color:#596b5c;pointer-events:none"></div>
+
+      <!-- Block 03: Stress test results -->
+      <a class="card-link" href="/stress-test" style="left:592px;top:385px;width:256px;height:170px" title="Stress Test"></a>
+      <div class="a" style="left:592px;top:385px;width:256px;height:170px;background:#fcfbf2;border:1px solid #ccd1ba;border-radius:4px;pointer-events:none"></div>
+      <div class="a" style="left:592px;top:385px;width:4px;height:170px;background:#e84526;border-radius:1px;pointer-events:none"></div>
+      <div class="t" style="left:606px;top:397px;width:230px;font:700 14px/normal var(--font);color:#596b5c;pointer-events:none">03  STRESS TEST RESULTS</div>
+      <div class="t" style="left:606px;top:421px;width:230px;font:700 11px/normal var(--font);color:#596b5c;pointer-events:none">SIMULATED COVER</div>
+      <div class="t" id="b3Value" style="left:606px;top:437px;width:230px;font:700 22px/normal var(--font);color:#0e2924;text-transform:uppercase;pointer-events:none"></div>
+      <div class="a" id="stressBars" style="left:630px;top:453px;width:124px;height:57px;display:flex;align-items:flex-end;gap:20px;pointer-events:none"></div>
+      <div class="a" id="stressLabels" style="left:0;top:0;width:0;height:0;pointer-events:none"></div>
+      <div class="t" id="b3Note" style="left:606px;top:530px;width:230px;font:500 8px/normal var(--font);color:#596b5c;pointer-events:none"></div>
+
+      <!-- Block 04: Evidence panel -->
+      <a class="card-link" href="/evidence" style="left:872px;top:385px;width:256px;height:170px" title="Evidence"></a>
+      <div class="a" style="left:872px;top:385px;width:256px;height:170px;background:#fcfbf2;border:1px solid #ccd1ba;border-radius:4px;pointer-events:none"></div>
+      <div class="a" style="left:872px;top:385px;width:4px;height:170px;background:#457829;border-radius:1px;pointer-events:none"></div>
+      <div class="t" style="left:886px;top:397px;width:230px;font:700 14px/normal var(--font);color:#596b5c;pointer-events:none">04  EVIDENCE PANEL</div>
+      <div class="t" style="left:886px;top:421px;width:230px;font:700 11px/normal var(--font);color:#596b5c;pointer-events:none">SOURCE VERIFICATION</div>
+      <div class="t" id="b4Value" style="left:886px;top:437px;width:230px;font:700 17px/normal var(--font);color:#0e2924;pointer-events:none"></div>
+      <div class="a" id="evidenceRows" style="left:888px;top:463px;width:270px;height:60px;pointer-events:none"></div>
+      <div class="t" style="left:886px;top:530px;width:230px;font:500 8px/normal var(--font);color:#596b5c;pointer-events:none">Publication dates &amp; source links</div>
+
+      <!-- Block 05: Model reliability (dark) -->
+      <a class="card-link" href="/model-health" style="left:1152px;top:385px;width:256px;height:170px" title="Model Health"></a>
+      <div class="a" style="left:1152px;top:385px;width:256px;height:170px;background:#0e2924;border:1px solid #0e2924;border-radius:4px;pointer-events:none"></div>
+      <div class="a" style="left:1152px;top:385px;width:4px;height:170px;background:#c4f52e;border-radius:1px;pointer-events:none"></div>
+      <div class="t" style="left:1166px;top:397px;width:230px;font:700 9px/normal var(--font);color:#c4f52e;pointer-events:none">05  MODEL RELIABILITY</div>
+      <div class="t" style="left:1166px;top:421px;width:230px;font:700 8px/normal var(--font);color:#bdd1bd;pointer-events:none">MAE / RMSE</div>
+      <div class="t" id="b5Value" style="left:1166px;top:437px;width:230px;font:700 22px/normal var(--font);color:#fcfbf2;pointer-events:none"></div>
+      <div class="a" id="relBars" style="left:1170px;top:480px;width:90px;height:38px;display:flex;align-items:flex-end;gap:10px;pointer-events:none"></div>
+      <div class="t" id="b5Note" style="left:1166px;top:530px;width:230px;font:500 8px/normal var(--font);color:#ccd9c2;pointer-events:none"></div>
+
+      <!-- Storage feature panel -->
+      <div class="a" style="left:32px;top:585px;width:840px;height:286px;background:#0e2825;border-radius:2px"></div>
+      <div class="t" id="liveLabel" style="left:65.6px;top:607px;width:672px;font:700 10px/normal var(--font);color:#c7f052"></div>
+      <div class="t" id="storagePct" style="left:60.8px;top:641px;width:468px;font:700 128px/128px var(--font);color:#fcfbf2"></div>
+      <div class="t" style="left:361px;top:613px;width:355px;font:500 155.31px/normal var(--font);color:#c7f052">%</div>
+      <div class="t" id="storageVolume" style="left:68px;top:792px;width:672px;font:500 11px/normal var(--font);color:#b2c9b8"></div>
+      <div class="a" style="left:68px;top:829px;width:744px;height:5px;background:#385247"></div>
+      <div class="a" id="storageMeterFill" style="left:68px;top:829px;width:0;height:5px;background:#c7f052"></div>
+
+      <div class="t" style="left:922.4px;top:601px;width:174px;font:700 10px/normal var(--font);color:#4d6359">CURRENT STORAGE</div>
+      <div class="t" id="storageSecondary" style="left:920px;top:637px;width:372px;font:700 46px/normal var(--font);color:#0e2825"></div>
+      <div class="t" style="left:922.4px;top:688px;width:264px;font:700 10px/normal var(--font);color:#4f7a2e">7-DAY FORECAST</div>
+      <div class="a" style="left:920px;top:719.5px;width:480px;height:1px;background:#c7cfba"></div>
+      <div class="t" style="left:922.4px;top:742px;width:264px;font:700 10px/normal var(--font);color:#4d6359">14-DAY OUTLOOK</div>
+      <div class="t" id="outlook14" style="left:920px;top:768px;width:360px;font:700 40px/normal var(--font);color:#0e2825"></div>
+      <div class="t" id="outlookDelta" style="left:922.4px;top:818px;width:396px;font:400 12px/normal var(--font);color:#4d6359"></div>
+
+      <!-- Storage trajectory chart -->
+      <div class="t" style="left:32px;top:909px;width:552px;font:700 10px/normal var(--font);color:#4f7a2e">01   /   STORAGE TRAJECTORY</div>
+      <div class="t" id="trajectoryTitle" style="left:32px;top:932px;width:876px;font:700 30px/normal var(--font);color:#0e2825">The reserve is trending down.</div>
+      <div class="t" id="trajectoryDesc" style="left:32px;top:972px;width:960px;font:400 13px/normal var(--font);color:#4d6359">Observed levels and a 30-day model outlook. The dotted threshold is a planning marker, not a statutory limit.</div>
+      <div class="a" style="left:32px;top:1015px;width:948px;height:340px;background:#fcfbf2;border-radius:2px"></div>
+      <svg id="trajectory" class="a" style="left:32px;top:1015px;overflow:hidden" width="948" height="340"></svg>
+
+      <!-- Threshold watch rail -->
+      <div class="a" style="left:1011.2px;top:909px;width:388.8px;height:446px;background:#e8e8d9;border-radius:2px"></div>
+      <div class="a" style="left:1011.2px;top:909px;width:6px;height:446px;background:#e04f2e"></div>
+      <div class="t" style="left:1042.4px;top:933px;width:324px;font:700 10px/normal var(--font);color:#e04f2e">02   /   THRESHOLD WATCH</div>
+      <div class="t" id="riskWatchTitle" style="left:1042.4px;top:966px;width:312px;font:700 29px/34px var(--font);color:#0e2825">A narrowing
+window to act.</div>
+      <div class="t" id="riskTitleLabel" style="left:1042.4px;top:1050px;width:312px;font:700 9px/normal var(--font);color:#4d6359"></div>
+      <div class="t" id="riskDays" style="left:1040px;top:1076px;width:288px;font:700 52px/normal var(--font);color:#e04f2e"></div>
+      <div class="t" style="left:1043.6px;top:1133px;width:180px;font:700 11px/normal var(--font);color:#e04f2e">DAYS</div>
+      <div class="a" style="left:1042.4px;top:1164.5px;width:321.6px;height:1px;background:#c7cfba"></div>
+      <div class="t" id="riskText" style="left:1042.4px;top:1185px;width:312px;font:400 13px/19px var(--font);color:#0e2825"></div>
+      <div class="t" style="left:1042.4px;top:1279px;width:216px;font:700 9px/normal var(--font);color:#4d6359">DAILY DEPLETION</div>
+      <div class="t" id="depletion" style="left:1042.4px;top:1302px;width:264px;font:700 20px/normal var(--font);color:#0e2825"></div>
+
+      <!-- Decision lab -->
+      <div class="a" style="left:32px;top:1404.5px;width:1368px;height:1px;background:#c7cfba"></div>
+      <div class="t" style="left:32px;top:1430px;width:420px;font:700 10px/normal var(--font);color:#4f7a2e">03   /   DECISION LAB</div>
+      <div class="t" style="left:32px;top:1455px;width:636px;font:700 26px/normal var(--font);color:#0e2825">What changes the runway?</div>
+      <div class="t" style="left:32px;top:1493px;width:600px;font:400 13px/normal var(--font);color:#4d6359">Stress-test the variables before preparing a response.</div>
+
+      <a class="card-link" href="/stress-test" style="left:32px;top:1528px;width:648px;height:204px" title="Stress Test"></a>
+      <div class="a" style="left:32px;top:1528px;width:648px;height:204px;background:#0e2825;border-radius:2px;pointer-events:none"></div>
+      <div class="t" style="left:60.8px;top:1553px;width:156px;font:700 9px/normal var(--font);color:#c7f052;pointer-events:none">DEMAND</div>
+      <div class="t" id="demandLabel" style="left:60.8px;top:1577px;width:264px;font:600 17px/normal var(--font);color:#fcfbf2;pointer-events:none"></div>
+      <div class="a" style="left:61px;top:1617px;width:285.6px;height:1px;background:#425e4f;pointer-events:none"></div>
+      <div class="t" id="rainfallValue" style="left:60.8px;top:1594px;width:288px;font:600 17px/normal var(--font);color:#fcfbf2;pointer-events:none"></div>
+      <div class="t" style="left:60.8px;top:1632px;width:228px;font:700 16px/normal var(--font);color:#c7f052;pointer-events:none">CATCHMENT RAINFALL</div>
+      <div class="t" style="left:394.4px;top:1553px;width:240px;font:700 9px/normal var(--font);color:#adc7b2;pointer-events:none">SIMULATED COVER</div>
+      <div class="t" id="coverDays" style="left:392px;top:1578px;width:264px;font:700 36px/normal var(--font);color:#c7f052;pointer-events:none"></div>
+      <div class="t" id="coverDelta" style="left:395px;top:1641px;width:264px;font:500 20px/normal var(--font);color:#fcfbf2;pointer-events:none"></div>
+      <div class="a" style="left:394px;top:1622px;width:246px;height:5px;background:#405c4d;pointer-events:none"></div>
+      <div class="a" id="runwayFill" style="left:394px;top:1621px;width:0;height:5px;background:#c7f052;pointer-events:none"></div>
+
+      <!-- Evidence log -->
+      <a class="card-link" href="/evidence" style="left:758px;top:1432px;width:611.39px;height:323px" title="Evidence Log"></a>
+      <div class="a" id="evidenceLog" style="left:758px;top:1432px;width:611.39px;height:323px;background:#f4f2e7;overflow:hidden;pointer-events:none">
+        <div class="t" style="left:13.84px;top:13.84px;width:230px;font:700 10.38px/normal var(--font);color:#5e6e5e;letter-spacing:0.46px">04  /  EVIDENCE LOG</div>
+        <div class="t" style="left:13.84px;top:40.38px;width:346px;font:700 25.38px/normal var(--font);color:#132e2b">Signals to verify.</div>
+        <div class="t" style="left:13.84px;top:76.14px;width:415px;font:400 12.69px/normal var(--font);color:#5e6e5e">Three sources; one needs follow-up before use.</div>
+        <div class="a" style="left:13.84px;top:104.97px;width:583.71px;height:1.15px;background:#cfd1bf"></div>
+        <div class="a" id="evidenceLogRows" style="left:0;top:0;width:0;height:0"></div>
+      </div>
+
+      <div class="a" style="left:40px;top:1771px;width:1368px;height:1px;background:#c7cfba"></div>
+
+    </div>
+  </div>
+
+  <script src="static/app.js"></script>
+</body>
+</html>

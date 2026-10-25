@@ -1,9 +1,116 @@
-# Check API
+# Check API Root & Health
 GET http://127.0.0.1:8000/
 Accept: application/json
 
 ###
 GET http://127.0.0.1:8000/health
+Accept: application/json
+
+###
+# List Reservoirs
+GET http://127.0.0.1:8000/api/reservoirs
+Accept: application/json
+
+###
+# Top Navigation Insights (5 Metric Cards)
+GET http://127.0.0.1:8000/api/overview/insights?reservoir=hirakud
+Accept: application/json
+
+###
+# Overview Dashboard (Live storage, Stepped Trajectory, Threshold Watch, Decision Lab)
+GET http://127.0.0.1:8000/api/overview?reservoir=hirakud
+Accept: application/json
+
+###
+# Storage Forecasts (7D, 14D, 30D, Conformal intervals, Composition Donut, Reliability)
+GET http://127.0.0.1:8000/api/forecasts?reservoir=hirakud
+Accept: application/json
+
+###
+# Demand Stress Test (Default runway & scenario comparisons)
+GET http://127.0.0.1:8000/api/stress-test?reservoir=hirakud
+Accept: application/json
+
+###
+# Interactive Demand Stress Test Simulation
+POST http://127.0.0.1:8000/api/stress-test/simulate?reservoir=hirakud
+Content-Type: application/json
+
+{
+  "water_demand": "high",
+  "inflow_conditions": "deficient_30",
+  "monsoon_timing": "delayed_14d",
+  "horizon_days": 44
+}
+
+###
+# Evidence & Verification Dashboard (Search -> Fetch -> Verify -> Ready)
+GET http://127.0.0.1:8000/api/evidence?reservoir=hirakud
+Accept: application/json
+
+###
+# Human Verification of an Evidence Item
+POST http://127.0.0.1:8000/api/evidence/verify
+Content-Type: application/json
+
+{
+  "source_id": "ev-odisha-water-20261010",
+  "new_status": "verified",
+  "new_stance": "mitigates_risk",
+  "notes": "Verified against executive engineer field dispatch report."
+}
+
+###
+# Model Health & Auditing (KPIs, Horizons, Residuals, Input Data Freshness, Audit Trail)
+GET http://127.0.0.1:8000/api/model-health?reservoir=hirakud
+Accept: application/json
+
+###
+# Reports Dashboard (Overview, Featured template, Previous assessments)
+GET http://127.0.0.1:8000/api/reports
+Accept: application/json
+
+###
+# Generate a New Assessment Report
+POST http://127.0.0.1:8000/api/reports/generate
+Content-Type: application/json
+
+{
+  "reservoir": "Hirakud",
+  "state": "Odisha",
+  "district": "Sambalpur",
+  "river_basin": "Mahanadi Basin",
+  "report_type": "Reservoir Risk Assessment",
+  "forecast_horizon_days": 14,
+  "include_sections": {
+    "forecast_charts": true,
+    "evidence_citations": true,
+    "mitigation_recommendations": true,
+    "scenario_comparisons": true,
+    "model_health_and_uncertainty": true
+  },
+  "output_format": "pdf"
+}
+
+###
+# Update Report Status (Workflow: draft -> in_review -> approved)
+POST http://127.0.0.1:8000/api/reports/1/status
+Content-Type: application/json
+
+{
+  "status": "approved",
+  "reviewed_by": "Chief Hydrologist",
+  "comments": "Approved for executive distribution."
+}
+
+###
+# Methodology: How WaterZero Thinks Ahead
+GET http://127.0.0.1:8000/api/methodology
+Accept: application/json
+
+###
+# About Team: Arohan Arora & Kunal Chawla
+GET http://127.0.0.1:8000/api/team
 Accept: application/json
 
 ###
@@ -21,8 +128,3 @@ Content-Type: application/json
   "max_sources": 8,
   "stale_after_days": 90
 }
-
-###
-# Fetch a saved research run
-GET http://127.0.0.1:8000/api/research/runs/1
-Accept: application/json
