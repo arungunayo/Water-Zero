@@ -1,0 +1,4 @@
+origin_week_end,horizon_weeks,target_week_end,pct_full_now,pred_low,pred_median,pred_high,below_threshold_median
+2025-07-10,1,2025-07-17,25.96,28.6,33.7,40.83,False
+2025-07-10,2,2025-07-24,25.96,28.41,36.22,46.31,False
+2025-07-10,4,2025-08-07,25.96,29.06,41.91,54.82,False

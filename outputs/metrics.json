@@ -1,0 +1,882 @@
+{
+  "version": "0.2.0",
+  "variant": "dam",
+  "cutoff": "2022-01-01",
+  "warning_threshold_pct": 26.72,
+  "units": "percentage points of pct_full",
+  "variant_cv_mae": {
+    "none": 3.3929016701538175,
+    "dam": 3.385565749268991,
+    "upstream_lag": 3.396115755379615,
+    "discharge": 3.401843393571404,
+    "dam+discharge": 3.449366192491899,
+    "upstream_lag+discharge": 3.456096805938722
+  },
+  "test": {
+    "1w": {
+      "model_mae": {
+        "all": 2.2103363924296726,
+        "monsoon": 4.340036100449668,
+        "dry": 0.8819098418825483
+      },
+      "seasonal_mae": {
+        "all": 2.6205376486995395,
+        "monsoon": 5.271775338418195,
+        "dry": 0.966795327389883
+      },
+      "persist_mae": {
+        "all": 3.7901727642276426,
+        "monsoon": 5.545158730158729,
+        "dry": 2.6954785478547856
+      },
+      "coverage_quantile": 0.6158536585365854,
+      "coverage_conformal": 0.774390243902439,
+      "blend": false
+    },
+    "2w": {
+      "model_mae": {
+        "all": 3.127204795753064,
+        "monsoon": 5.783401754215846,
+        "dry": 1.4803626815061404
+      },
+      "seasonal_mae": {
+        "all": 3.408686881194366,
+        "monsoon": 6.307539425068657,
+        "dry": 1.6113983039923045
+      },
+      "persist_mae": {
+        "all": 6.845699588477366,
+        "monsoon": 9.273310291858676,
+        "dry": 5.340580952380952
+      },
+      "coverage_quantile": 0.5246913580246914,
+      "coverage_conformal": 0.7839506172839507,
+      "blend": false
+    },
+    "4w": {
+      "model_mae": {
+        "all": 4.357173683328135,
+        "monsoon": 6.875887528866129,
+        "dry": 2.8858457933603954
+      },
+      "seasonal_mae": {
+        "all": 4.2377677570024215,
+        "monsoon": 7.133682223480043,
+        "dry": 2.546094949852128
+      },
+      "persist_mae": {
+        "all": 12.9403125,
+        "monsoon": 16.861698950766744,
+        "dry": 10.649601603017445
+      },
+      "coverage_quantile": 0.48125,
+      "coverage_conformal": 0.7375,
+      "blend": false
+    }
+  },
+  "test_skill_vs_seasonal": {
+    "1w": {
+      "all": 0.15653324289137083,
+      "monsoon": 0.17674107452539833,
+      "dry": 0.08780088515374329
+    },
+    "2w": {
+      "all": 0.08257786509938203,
+      "monsoon": 0.08309701066150788,
+      "dry": 0.0813179597877931
+    },
+    "4w": {
+      "all": -0.02817660928407628,
+      "monsoon": 0.03613767568246862,
+      "dry": -0.1334399738422949
+    }
+  },
+  "test_monsoon_mae_by_variant": {
+    "none": {
+      "1w": 4.704654593673161,
+      "2w": 5.266012405690794,
+      "4w": 6.437003401205107
+    },
+    "dam": {
+      "1w": 4.340036100449668,
+      "2w": 5.783401754215846,
+      "4w": 6.875887528866129
+    },
+    "upstream_lag": {
+      "1w": 4.795673340081232,
+      "2w": 6.0568231116485585,
+      "4w": 6.718890676029146
+    },
+    "discharge": {
+      "1w": 4.630584863961348,
+      "2w": 5.826549227844921,
+      "4w": 6.995303134008688
+    },
+    "dam+discharge": {
+      "1w": 4.631418520896296,
+      "2w": 5.888329028478017,
+      "4w": 7.4150893363562025
+    },
+    "upstream_lag+discharge": {
+      "1w": 4.708661052926702,
+      "2w": 5.927816393454457,
+      "4w": 7.244068247702978
+    }
+  },
+  "oracle_future_rain_not_deployable": [
+    {
+      "h_weeks": 1,
+      "MAE_all": 2.0856281248,
+      "MAE_monsoon": 4.0550939291,
+      "real_model_MAE_all": 2.2103363924,
+      "real_model_MAE_monsoon": 4.3400361004,
+      "seasonal_MAE_monsoon": 5.2717753384
+    },
+    {
+      "h_weeks": 2,
+      "MAE_all": 2.9982420352,
+      "MAE_monsoon": 5.3977392247,
+      "real_model_MAE_all": 3.1272047958,
+      "real_model_MAE_monsoon": 5.7834017542,
+      "seasonal_MAE_monsoon": 6.3075394251
+    },
+    {
+      "h_weeks": 4,
+      "MAE_all": 3.5224815844,
+      "MAE_monsoon": 5.5152386289,
+      "real_model_MAE_all": 4.3571736833,
+      "real_model_MAE_monsoon": 6.8758875289,
+      "seasonal_MAE_monsoon": 7.1336822235
+    }
+  ],
+  "backtest_summary": [
+    {
+      "horizon_weeks": 1,
+      "backtest_year": 2022,
+      "n_weeks": 52,
+      "model_mae": 2.4,
+      "model_rmse": 5.32,
+      "seasonal_mae": 3.32,
+      "zero_change_mae": 4.03,
+      "skill_vs_seasonal_pct": 27.7,
+      "cov80_pct": 75.0,
+      "mean_band_width": 6.76
+    },
+    {
+      "horizon_weeks": 1,
+      "backtest_year": 2023,
+      "n_weeks": 46,
+      "model_mae": 2.89,
+      "model_rmse": 5.44,
+      "seasonal_mae": 3.19,
+      "zero_change_mae": 4.14,
+      "skill_vs_seasonal_pct": 9.4,
+      "cov80_pct": 71.7,
+      "mean_band_width": 6.78
+    },
+    {
+      "horizon_weeks": 1,
+      "backtest_year": 2024,
+      "n_weeks": 44,
+      "model_mae": 1.81,
+      "model_rmse": 3.1,
+      "seasonal_mae": 1.94,
+      "zero_change_mae": 3.58,
+      "skill_vs_seasonal_pct": 7.1,
+      "cov80_pct": 81.8,
+      "mean_band_width": 6.89
+    },
+    {
+      "horizon_weeks": 1,
+      "backtest_year": 2025,
+      "n_weeks": 22,
+      "model_mae": 0.8,
+      "model_rmse": 1.75,
+      "seasonal_mae": 1.14,
+      "zero_change_mae": 2.9,
+      "skill_vs_seasonal_pct": 29.3,
+      "cov80_pct": 86.4,
+      "mean_band_width": 4.77
+    },
+    {
+      "horizon_weeks": 2,
+      "backtest_year": 2022,
+      "n_weeks": 52,
+      "model_mae": 3.54,
+      "model_rmse": 6.58,
+      "seasonal_mae": 4.92,
+      "zero_change_mae": 7.31,
+      "skill_vs_seasonal_pct": 28.1,
+      "cov80_pct": 78.8,
+      "mean_band_width": 9.76
+    },
+    {
+      "horizon_weeks": 2,
+      "backtest_year": 2023,
+      "n_weeks": 46,
+      "model_mae": 3.68,
+      "model_rmse": 6.06,
+      "seasonal_mae": 3.49,
+      "zero_change_mae": 6.82,
+      "skill_vs_seasonal_pct": -5.5,
+      "cov80_pct": 76.1,
+      "mean_band_width": 9.64
+    },
+    {
+      "horizon_weeks": 2,
+      "backtest_year": 2024,
+      "n_weeks": 44,
+      "model_mae": 2.66,
+      "model_rmse": 3.8,
+      "seasonal_mae": 2.51,
+      "zero_change_mae": 6.93,
+      "skill_vs_seasonal_pct": -5.9,
+      "cov80_pct": 77.3,
+      "mean_band_width": 10.25
+    },
+    {
+      "horizon_weeks": 2,
+      "backtest_year": 2025,
+      "n_weeks": 20,
+      "model_mae": 1.51,
+      "model_rmse": 2.49,
+      "seasonal_mae": 1.52,
+      "zero_change_mae": 5.51,
+      "skill_vs_seasonal_pct": 0.3,
+      "cov80_pct": 95.0,
+      "mean_band_width": 6.89
+    },
+    {
+      "horizon_weeks": 4,
+      "backtest_year": 2022,
+      "n_weeks": 52,
+      "model_mae": 4.54,
+      "model_rmse": 6.99,
+      "seasonal_mae": 5.34,
+      "zero_change_mae": 13.66,
+      "skill_vs_seasonal_pct": 15.1,
+      "cov80_pct": 67.3,
+      "mean_band_width": 15.13
+    },
+    {
+      "horizon_weeks": 4,
+      "backtest_year": 2023,
+      "n_weeks": 46,
+      "model_mae": 4.56,
+      "model_rmse": 6.56,
+      "seasonal_mae": 4.36,
+      "zero_change_mae": 12.73,
+      "skill_vs_seasonal_pct": -4.5,
+      "cov80_pct": 73.9,
+      "mean_band_width": 14.61
+    },
+    {
+      "horizon_weeks": 4,
+      "backtest_year": 2024,
+      "n_weeks": 42,
+      "model_mae": 3.48,
+      "model_rmse": 4.56,
+      "seasonal_mae": 3.97,
+      "zero_change_mae": 13.39,
+      "skill_vs_seasonal_pct": 12.4,
+      "cov80_pct": 83.3,
+      "mean_band_width": 15.77
+    },
+    {
+      "horizon_weeks": 4,
+      "backtest_year": 2025,
+      "n_weeks": 20,
+      "model_mae": 2.66,
+      "model_rmse": 3.38,
+      "seasonal_mae": 1.72,
+      "zero_change_mae": 10.61,
+      "skill_vs_seasonal_pct": -54.9,
+      "cov80_pct": 100.0,
+      "mean_band_width": 10.49
+    }
+  ],
+  "target_audit": [
+    {
+      "horizon_weeks": 1,
+      "horizon_days": 7,
+      "n_all": 172,
+      "n_genuinely_observed": 164,
+      "n_interpolated_targets": 8,
+      "all_targets_mae": 2.2,
+      "all_targets_seasonal_mae": 2.39,
+      "all_targets_skill_pct": 7.9,
+      "observed_targets_mae": 2.21,
+      "observed_targets_seasonal_mae": 2.62,
+      "observed_targets_skill_pct": 15.7
+    },
+    {
+      "horizon_weeks": 2,
+      "horizon_days": 14,
+      "n_all": 170,
+      "n_genuinely_observed": 162,
+      "n_interpolated_targets": 8,
+      "all_targets_mae": 3.14,
+      "all_targets_seasonal_mae": 3.14,
+      "all_targets_skill_pct": 0.1,
+      "observed_targets_mae": 3.13,
+      "observed_targets_seasonal_mae": 3.41,
+      "observed_targets_skill_pct": 8.3
+    },
+    {
+      "horizon_weeks": 4,
+      "horizon_days": 28,
+      "n_all": 168,
+      "n_genuinely_observed": 160,
+      "n_interpolated_targets": 8,
+      "all_targets_mae": 4.33,
+      "all_targets_seasonal_mae": 3.96,
+      "all_targets_skill_pct": -9.3,
+      "observed_targets_mae": 4.36,
+      "observed_targets_seasonal_mae": 4.24,
+      "observed_targets_skill_pct": -2.8
+    }
+  ],
+  "three_baselines_comparison": [
+    {
+      "horizon_weeks": 1,
+      "horizon_days": 7,
+      "n_obs": 164,
+      "model_mae": 2.21,
+      "model_rmse": 4.5,
+      "model_r2": 0.44,
+      "seasonal_mae": 2.62,
+      "skill_vs_seasonal_pct": 15.7,
+      "zero_change_mae": 3.79,
+      "skill_vs_zero_pct": 41.7,
+      "n_persistence": 155,
+      "persistence_mae": 3.82,
+      "skill_vs_persistence_pct": 40.8,
+      "empirical_cov80_pct": 77.4,
+      "mean_band_width": 6.38
+    },
+    {
+      "horizon_weeks": 2,
+      "horizon_days": 14,
+      "n_obs": 162,
+      "model_mae": 3.13,
+      "model_rmse": 5.45,
+      "model_r2": 0.66,
+      "seasonal_mae": 3.41,
+      "skill_vs_seasonal_pct": 8.3,
+      "zero_change_mae": 6.85,
+      "skill_vs_zero_pct": 54.3,
+      "n_persistence": 152,
+      "persistence_mae": 5.45,
+      "skill_vs_persistence_pct": 42.1,
+      "empirical_cov80_pct": 78.4,
+      "mean_band_width": 9.25
+    },
+    {
+      "horizon_weeks": 4,
+      "horizon_days": 28,
+      "n_obs": 160,
+      "model_mae": 4.36,
+      "model_rmse": 6.48,
+      "model_r2": 0.84,
+      "seasonal_mae": 4.24,
+      "skill_vs_seasonal_pct": -2.8,
+      "zero_change_mae": 12.94,
+      "skill_vs_zero_pct": 66.3,
+      "n_persistence": 150,
+      "persistence_mae": 9.5,
+      "skill_vs_persistence_pct": 53.8,
+      "empirical_cov80_pct": 73.8,
+      "mean_band_width": 14.15
+    }
+  ],
+  "magnitude_bins": [
+    {
+      "bin": "Large Drawdown (<-10)",
+      "n": 2,
+      "actual_mean": -12.3175,
+      "pred_mean": -1.2055107577,
+      "mae": 11.1119892423,
+      "bias": 11.1119892423,
+      "horizon_weeks": 1
+    },
+    {
+      "bin": "Mod Drawdown (-10 to -2)",
+      "n": 80,
+      "actual_mean": -3.502025,
+      "pred_mean": -2.8595553427,
+      "mae": 1.1273597289,
+      "bias": 0.6424696573,
+      "horizon_weeks": 1
+    },
+    {
+      "bin": "Near Steady (-2 to +2)",
+      "n": 56,
+      "actual_mean": -0.503327381,
+      "pred_mean": -0.5462778021,
+      "mae": 1.1420411352,
+      "bias": -0.0429504212,
+      "horizon_weeks": 1
+    },
+    {
+      "bin": "Mod Inflow (+2 to +10)",
+      "n": 17,
+      "actual_mean": 4.7873529412,
+      "pred_mean": 3.2683024272,
+      "mae": 3.1461922967,
+      "bias": -1.519050514,
+      "horizon_weeks": 1
+    },
+    {
+      "bin": "Surge Inflow (>+10)",
+      "n": 9,
+      "actual_mean": 19.9788888889,
+      "pred_mean": 5.2407956722,
+      "mae": 14.7380932167,
+      "bias": -14.7380932167,
+      "horizon_weeks": 1
+    },
+    {
+      "bin": "Large Drawdown (<-10)",
+      "n": 5,
+      "actual_mean": -12.1005,
+      "pred_mean": -5.7776547916,
+      "mae": 6.3228452084,
+      "bias": 6.3228452084,
+      "horizon_weeks": 2
+    },
+    {
+      "bin": "Mod Drawdown (-10 to -2)",
+      "n": 92,
+      "actual_mean": -5.8319474638,
+      "pred_mean": -5.4836424387,
+      "mae": 1.4110534682,
+      "bias": 0.348305025,
+      "horizon_weeks": 2
+    },
+    {
+      "bin": "Near Steady (-2 to +2)",
+      "n": 30,
+      "actual_mean": -0.0781111111,
+      "pred_mean": 0.2375211387,
+      "mae": 3.0055073261,
+      "bias": 0.3156322498,
+      "horizon_weeks": 2
+    },
+    {
+      "bin": "Mod Inflow (+2 to +10)",
+      "n": 15,
+      "actual_mean": 4.858,
+      "pred_mean": 1.8182659516,
+      "mae": 4.5312088598,
+      "bias": -3.0397340484,
+      "horizon_weeks": 2
+    },
+    {
+      "bin": "Surge Inflow (>+10)",
+      "n": 20,
+      "actual_mean": 20.31475,
+      "pred_mean": 12.0287986043,
+      "mae": 9.352133956,
+      "bias": -8.2859513957,
+      "horizon_weeks": 2
+    },
+    {
+      "bin": "Large Drawdown (<-10)",
+      "n": 65,
+      "actual_mean": -13.5799025641,
+      "pred_mean": -12.383641035,
+      "mae": 2.568417764,
+      "bias": 1.1962615291,
+      "horizon_weeks": 4
+    },
+    {
+      "bin": "Mod Drawdown (-10 to -2)",
+      "n": 40,
+      "actual_mean": -6.8294916667,
+      "pred_mean": -7.927750329,
+      "mae": 2.6137727012,
+      "bias": -1.0982586624,
+      "horizon_weeks": 4
+    },
+    {
+      "bin": "Near Steady (-2 to +2)",
+      "n": 14,
+      "actual_mean": -0.14,
+      "pred_mean": -3.9681113248,
+      "mae": 5.9204193872,
+      "bias": -3.8281113248,
+      "horizon_weeks": 4
+    },
+    {
+      "bin": "Mod Inflow (+2 to +10)",
+      "n": 9,
+      "actual_mean": 5.0596296296,
+      "pred_mean": -1.7665066272,
+      "mae": 7.6370828777,
+      "bias": -6.8261362569,
+      "horizon_weeks": 4
+    },
+    {
+      "bin": "Surge Inflow (>+10)",
+      "n": 32,
+      "actual_mean": 26.79875,
+      "pred_mean": 21.4703222784,
+      "mae": 8.5634409159,
+      "bias": -5.3284277216,
+      "horizon_weeks": 4
+    }
+  ],
+  "directional_and_extremes": [
+    {
+      "horizon_weeks": 1,
+      "horizon_days": 7,
+      "directional_accuracy_pct": 90.7,
+      "extreme_p90_threshold": 7.0,
+      "extreme_mae": 10.59,
+      "extreme_zero_mae": 14.81,
+      "extreme_skill_pct": 28.5,
+      "pos_inflow_n": 40,
+      "pos_inflow_mae": 5.13,
+      "pos_inflow_bias": -4.2,
+      "neg_drawdown_n": 123,
+      "neg_drawdown_mae": 1.27,
+      "neg_drawdown_bias": 0.65
+    },
+    {
+      "horizon_weeks": 2,
+      "horizon_days": 14,
+      "directional_accuracy_pct": 90.4,
+      "extreme_p90_threshold": 12.8,
+      "extreme_mae": 11.32,
+      "extreme_zero_mae": 22.13,
+      "extreme_skill_pct": 48.9,
+      "pos_inflow_n": 48,
+      "pos_inflow_mae": 6.44,
+      "pos_inflow_bias": -4.03,
+      "neg_drawdown_n": 114,
+      "neg_drawdown_mae": 1.73,
+      "neg_drawdown_bias": 0.49
+    },
+    {
+      "horizon_weeks": 4,
+      "horizon_days": 28,
+      "directional_accuracy_pct": 92.3,
+      "extreme_p90_threshold": 23.9,
+      "extreme_mae": 11.02,
+      "extreme_zero_mae": 36.18,
+      "extreme_skill_pct": 69.5,
+      "pos_inflow_n": 49,
+      "pos_inflow_mae": 7.98,
+      "pos_inflow_bias": -5.12,
+      "neg_drawdown_n": 111,
+      "neg_drawdown_mae": 2.76,
+      "neg_drawdown_bias": -0.01
+    }
+  ],
+  "rolling_yearly_accuracy": [
+    {
+      "horizon_weeks": 1,
+      "backtest_year": 2022,
+      "n_weeks": 52,
+      "model_mae": 2.4,
+      "model_rmse": 5.32,
+      "seasonal_mae": 3.32,
+      "zero_change_mae": 4.03,
+      "skill_vs_seasonal_pct": 27.7,
+      "cov80_pct": 75.0,
+      "mean_band_width": 6.76
+    },
+    {
+      "horizon_weeks": 1,
+      "backtest_year": 2023,
+      "n_weeks": 46,
+      "model_mae": 2.89,
+      "model_rmse": 5.44,
+      "seasonal_mae": 3.19,
+      "zero_change_mae": 4.14,
+      "skill_vs_seasonal_pct": 9.4,
+      "cov80_pct": 71.7,
+      "mean_band_width": 6.78
+    },
+    {
+      "horizon_weeks": 1,
+      "backtest_year": 2024,
+      "n_weeks": 44,
+      "model_mae": 1.81,
+      "model_rmse": 3.1,
+      "seasonal_mae": 1.94,
+      "zero_change_mae": 3.58,
+      "skill_vs_seasonal_pct": 7.1,
+      "cov80_pct": 81.8,
+      "mean_band_width": 6.89
+    },
+    {
+      "horizon_weeks": 1,
+      "backtest_year": 2025,
+      "n_weeks": 22,
+      "model_mae": 0.8,
+      "model_rmse": 1.75,
+      "seasonal_mae": 1.14,
+      "zero_change_mae": 2.9,
+      "skill_vs_seasonal_pct": 29.3,
+      "cov80_pct": 86.4,
+      "mean_band_width": 4.77
+    },
+    {
+      "horizon_weeks": 2,
+      "backtest_year": 2022,
+      "n_weeks": 52,
+      "model_mae": 3.54,
+      "model_rmse": 6.58,
+      "seasonal_mae": 4.92,
+      "zero_change_mae": 7.31,
+      "skill_vs_seasonal_pct": 28.1,
+      "cov80_pct": 78.8,
+      "mean_band_width": 9.76
+    },
+    {
+      "horizon_weeks": 2,
+      "backtest_year": 2023,
+      "n_weeks": 46,
+      "model_mae": 3.68,
+      "model_rmse": 6.06,
+      "seasonal_mae": 3.49,
+      "zero_change_mae": 6.82,
+      "skill_vs_seasonal_pct": -5.5,
+      "cov80_pct": 76.1,
+      "mean_band_width": 9.64
+    },
+    {
+      "horizon_weeks": 2,
+      "backtest_year": 2024,
+      "n_weeks": 44,
+      "model_mae": 2.66,
+      "model_rmse": 3.8,
+      "seasonal_mae": 2.51,
+      "zero_change_mae": 6.93,
+      "skill_vs_seasonal_pct": -5.9,
+      "cov80_pct": 77.3,
+      "mean_band_width": 10.25
+    },
+    {
+      "horizon_weeks": 2,
+      "backtest_year": 2025,
+      "n_weeks": 20,
+      "model_mae": 1.51,
+      "model_rmse": 2.49,
+      "seasonal_mae": 1.52,
+      "zero_change_mae": 5.51,
+      "skill_vs_seasonal_pct": 0.3,
+      "cov80_pct": 95.0,
+      "mean_band_width": 6.89
+    },
+    {
+      "horizon_weeks": 4,
+      "backtest_year": 2022,
+      "n_weeks": 52,
+      "model_mae": 4.54,
+      "model_rmse": 6.99,
+      "seasonal_mae": 5.34,
+      "zero_change_mae": 13.66,
+      "skill_vs_seasonal_pct": 15.1,
+      "cov80_pct": 67.3,
+      "mean_band_width": 15.13
+    },
+    {
+      "horizon_weeks": 4,
+      "backtest_year": 2023,
+      "n_weeks": 46,
+      "model_mae": 4.56,
+      "model_rmse": 6.56,
+      "seasonal_mae": 4.36,
+      "zero_change_mae": 12.73,
+      "skill_vs_seasonal_pct": -4.5,
+      "cov80_pct": 73.9,
+      "mean_band_width": 14.61
+    },
+    {
+      "horizon_weeks": 4,
+      "backtest_year": 2024,
+      "n_weeks": 42,
+      "model_mae": 3.48,
+      "model_rmse": 4.56,
+      "seasonal_mae": 3.97,
+      "zero_change_mae": 13.39,
+      "skill_vs_seasonal_pct": 12.4,
+      "cov80_pct": 83.3,
+      "mean_band_width": 15.77
+    },
+    {
+      "horizon_weeks": 4,
+      "backtest_year": 2025,
+      "n_weeks": 20,
+      "model_mae": 2.66,
+      "model_rmse": 3.38,
+      "seasonal_mae": 1.72,
+      "zero_change_mae": 10.61,
+      "skill_vs_seasonal_pct": -54.9,
+      "cov80_pct": 100.0,
+      "mean_band_width": 10.49
+    }
+  ],
+  "extreme_event_coverage": [
+    {
+      "horizon_weeks": 1,
+      "horizon_days": 7,
+      "all_extremes_p90": 7.0,
+      "all_extremes_n": 17,
+      "all_extremes_cov_pct": 29.4,
+      "large_pos_surge_threshold": 17.2,
+      "large_pos_n": 4,
+      "large_pos_cov_pct": 0.0,
+      "large_neg_drawdown_threshold": -4.9,
+      "large_neg_n": 13,
+      "large_neg_cov_pct": 30.8
+    },
+    {
+      "horizon_weeks": 2,
+      "horizon_days": 14,
+      "all_extremes_p90": 12.8,
+      "all_extremes_n": 17,
+      "all_extremes_cov_pct": 47.1,
+      "large_pos_surge_threshold": 25.1,
+      "large_pos_n": 5,
+      "large_pos_cov_pct": 0.0,
+      "large_neg_drawdown_threshold": -8.7,
+      "large_neg_n": 12,
+      "large_neg_cov_pct": 58.3
+    },
+    {
+      "horizon_weeks": 4,
+      "horizon_days": 28,
+      "all_extremes_p90": 23.9,
+      "all_extremes_n": 16,
+      "all_extremes_cov_pct": 75.0,
+      "large_pos_surge_threshold": 39.7,
+      "large_pos_n": 5,
+      "large_pos_cov_pct": 40.0,
+      "large_neg_drawdown_threshold": -15.7,
+      "large_neg_n": 12,
+      "large_neg_cov_pct": 25.0
+    }
+  ],
+  "operational_warnings": [
+    {
+      "horizon_weeks": 1,
+      "lead_time_days": 7,
+      "decision_rule": "median_forecast",
+      "total_new_events": 5,
+      "warnings_issued": 3,
+      "hits_tp": 3,
+      "missed_fn": 2,
+      "false_alarms_fp": 0,
+      "recall_pct": 60.0,
+      "precision_pct": 100.0,
+      "f1_score": 0.75
+    },
+    {
+      "horizon_weeks": 1,
+      "lead_time_days": 7,
+      "decision_rule": "conformal_lower_bound",
+      "total_new_events": 5,
+      "warnings_issued": 6,
+      "hits_tp": 4,
+      "missed_fn": 1,
+      "false_alarms_fp": 2,
+      "recall_pct": 80.0,
+      "precision_pct": 66.7,
+      "f1_score": 0.73
+    },
+    {
+      "horizon_weeks": 1,
+      "lead_time_days": 7,
+      "decision_rule": "seasonal_baseline",
+      "total_new_events": 5,
+      "warnings_issued": 3,
+      "hits_tp": 3,
+      "missed_fn": 2,
+      "false_alarms_fp": 0,
+      "recall_pct": 60.0,
+      "precision_pct": 100.0,
+      "f1_score": 0.75
+    },
+    {
+      "horizon_weeks": 2,
+      "lead_time_days": 14,
+      "decision_rule": "median_forecast",
+      "total_new_events": 9,
+      "warnings_issued": 7,
+      "hits_tp": 7,
+      "missed_fn": 2,
+      "false_alarms_fp": 0,
+      "recall_pct": 77.8,
+      "precision_pct": 100.0,
+      "f1_score": 0.88
+    },
+    {
+      "horizon_weeks": 2,
+      "lead_time_days": 14,
+      "decision_rule": "conformal_lower_bound",
+      "total_new_events": 9,
+      "warnings_issued": 10,
+      "hits_tp": 8,
+      "missed_fn": 1,
+      "false_alarms_fp": 2,
+      "recall_pct": 88.9,
+      "precision_pct": 80.0,
+      "f1_score": 0.84
+    },
+    {
+      "horizon_weeks": 2,
+      "lead_time_days": 14,
+      "decision_rule": "seasonal_baseline",
+      "total_new_events": 9,
+      "warnings_issued": 7,
+      "hits_tp": 7,
+      "missed_fn": 2,
+      "false_alarms_fp": 0,
+      "recall_pct": 77.8,
+      "precision_pct": 100.0,
+      "f1_score": 0.88
+    },
+    {
+      "horizon_weeks": 4,
+      "lead_time_days": 28,
+      "decision_rule": "median_forecast",
+      "total_new_events": 15,
+      "warnings_issued": 13,
+      "hits_tp": 12,
+      "missed_fn": 3,
+      "false_alarms_fp": 1,
+      "recall_pct": 80.0,
+      "precision_pct": 92.3,
+      "f1_score": 0.86
+    },
+    {
+      "horizon_weeks": 4,
+      "lead_time_days": 28,
+      "decision_rule": "conformal_lower_bound",
+      "total_new_events": 15,
+      "warnings_issued": 18,
+      "hits_tp": 15,
+      "missed_fn": 0,
+      "false_alarms_fp": 3,
+      "recall_pct": 100.0,
+      "precision_pct": 83.3,
+      "f1_score": 0.91
+    },
+    {
+      "horizon_weeks": 4,
+      "lead_time_days": 28,
+      "decision_rule": "seasonal_baseline",
+      "total_new_events": 15,
+      "warnings_issued": 14,
+      "hits_tp": 13,
+      "missed_fn": 2,
+      "false_alarms_fp": 1,
+      "recall_pct": 86.7,
+      "precision_pct": 92.9,
+      "f1_score": 0.9
+    }
+  ]
+}

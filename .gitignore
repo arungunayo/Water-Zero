@@ -12,3 +12,4 @@ __pycache__/
 # SSH keys — never commit these
 sshid-github.txt
 sshid-github.txt.pub
+internal-docs
