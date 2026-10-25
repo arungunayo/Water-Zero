@@ -9,4 +9,6 @@ dependencies = [
     "numpy>=2.4",
     "pandas>=3.0",
     "uvicorn>=0.54.0",
+    "python-dotenv",
+    "httpx>=0.28.1",
 ]

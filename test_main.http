@@ -1,11 +1,28 @@
-# Test your FastAPI endpoints
-
+# Check API
 GET http://127.0.0.1:8000/
 Accept: application/json
 
 ###
-
-GET http://127.0.0.1:8000/hello/User
+GET http://127.0.0.1:8000/health
 Accept: application/json
 
 ###
+# Live research (requires TINYFISH_API_KEY in local .env)
+POST http://127.0.0.1:8000/api/research
+Content-Type: application/json
+
+{
+  "reservoir": "Hirakud",
+  "state": "Odisha",
+  "district": "Sambalpur",
+  "date_from": "2026-07-01",
+  "date_to": "2026-10-24",
+  "forecast_horizon_days": 14,
+  "max_sources": 8,
+  "stale_after_days": 90
+}
+
+###
+# Fetch a saved research run
+GET http://127.0.0.1:8000/api/research/runs/1
+Accept: application/json
